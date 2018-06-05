@@ -97,13 +97,13 @@ void CTabMain::OnTcnSelchange(NMHDR *pNMHDR, LRESULT *pResult)
 	// TODO: 在此添加控件通知处理程序代码
 	*pResult = 0;
 	//点击Tab标签时切换页面
-	int nNum = GetCurSel();
+	DWORD nNum = GetCurSel();
 	if (nNum > m_dwDialogCount - 1) {
 		MessageBox(L"当前标签功能未开放");
 		return;
 	}
 
-	for (int i = 0; i < m_dwDialogCount; i++) {
+	for (DWORD i = 0; i < m_dwDialogCount; i++) {
 		if (nNum == i) {
 			m_Dialog[i]->ShowWindow(SW_SHOW);
 		}

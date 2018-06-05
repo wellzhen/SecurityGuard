@@ -18,12 +18,10 @@ BOOL CPe::LoadFile(WCHAR* pFileName)
 	m_pFileName = pFileName;
 	HANDLE hFile = CreateFile(pFileName, GENERIC_READ, NULL, NULL, OPEN_EXISTING, NULL, NULL);
 	if (hFile == INVALID_HANDLE_VALUE) {
-		MessageBoxW(NULL, L"打开文件失败", L"tip", MB_OK);
 		return FALSE;
 	}
 	DWORD dwFileSize = GetFileSize(hFile, NULL);
 	if (dwFileSize == INVALID_FILE_SIZE) {
-		MessageBoxW(NULL, L"无法读取文件大小", L"tip", MB_OK);
 		CloseHandle(hFile);
 		return FALSE;
 	}
@@ -31,7 +29,6 @@ BOOL CPe::LoadFile(WCHAR* pFileName)
 	ZeroMemory(m_pFileBuffer, dwFileSize);
 	BOOL  bRead = ReadFile(hFile, m_pFileBuffer, dwFileSize, NULL, NULL);
 	if (bRead == FALSE) {
-		MessageBoxW(NULL, L"无法读取文件数据", L"tip", MB_OK);
 		CloseHandle(hFile);
 		return FALSE;
 	}
@@ -48,11 +45,9 @@ BOOL CPe::LoadFile(WCHAR* pFileName)
 BOOL CPe::IsPeFile()
 {
 	if (m_pDosHeader->e_magic != IMAGE_DOS_SIGNATURE) {
-		MessageBoxW(NULL, L"没有MZ签名", L"tip", MB_OK);
 		return FALSE;
 	}
 	if (m_pNtHeaders->Signature != IMAGE_NT_SIGNATURE) {
-		MessageBoxW(NULL, L"没有NT头的PE签名\n", L"tip", MB_OK);
 		return FALSE;
 	}
 	return TRUE;
@@ -70,7 +65,6 @@ DWORD CPe::RVA2FOA(DWORD RVA)
 		pSectionHeader++;
 	}
 	if (!bFind) {
-		MessageBoxW(NULL, L"RVA2FOA转换失败", L"tip", MB_OK);
 		return 0;
 	}
 	return RVA - pSectionHeader->VirtualAddress + pSectionHeader->PointerToRawData;
@@ -90,7 +84,6 @@ DWORD CPe::GetSectionFoaByRva(DWORD RVA)
 		pSectionHeader++;
 	}
 	if (!bFind) {
-		MessageBoxW(NULL, L"GetSectionFoaByRva error", L"tip", MB_OK);
 		return 0;
 	}
 	return pSectionHeader->PointerToRawData;
@@ -109,7 +102,6 @@ IMAGE_SECTION_HEADER* CPe::GetSectionHeaderByRva(DWORD RVA)
 		pSectionHeader++;
 	}
 	if (!bFind) {
-		MessageBoxW(NULL, L"GetSectionHeaderByRva error", L"tip", MB_OK);
 		return 0;
 	}
 	return pSectionHeader;
