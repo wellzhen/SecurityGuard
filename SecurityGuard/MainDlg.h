@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "TabMain.h"
 
 
 // CMainDlg 对话框
@@ -14,7 +15,7 @@ public:
 
 // 对话框数据
 #ifdef AFX_DESIGN_TIME
-	enum { IDD = IDD_SECURITYGUARD_DIALOG };
+	enum { IDD = IDD_DIALOG_MAIN };
 #endif
 
 	protected:
@@ -31,4 +32,6 @@ protected:
 	afx_msg void OnPaint();
 	afx_msg HCURSOR OnQueryDragIcon();
 	DECLARE_MESSAGE_MAP()
+public:
+	CTabMain m_TabMain;
 };

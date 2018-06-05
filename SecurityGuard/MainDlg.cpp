@@ -6,6 +6,12 @@
 #include "SecurityGuard.h"
 #include "MainDlg.h"
 #include "afxdialogex.h"
+#include "ProcessDlg.h"
+#include "FileDlg.h"
+#include "PerformDlg.h"
+#include "PowerDlg.h"
+#include "WndDlg.h"
+#include "PeDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -50,7 +56,7 @@ END_MESSAGE_MAP()
 
 
 CMainDlg::CMainDlg(CWnd* pParent /*=NULL*/)
-	: CDialogEx(IDD_SECURITYGUARD_DIALOG, pParent)
+	: CDialogEx(IDD_DIALOG_MAIN, pParent)
 {
 	m_hIcon = AfxGetApp()->LoadIcon(IDR_MAINFRAME);
 }
@@ -58,6 +64,7 @@ CMainDlg::CMainDlg(CWnd* pParent /*=NULL*/)
 void CMainDlg::DoDataExchange(CDataExchange* pDX)
 {
 	CDialogEx::DoDataExchange(pDX);
+	DDX_Control(pDX, IDC_TAB_MAIN, m_TabMain);
 }
 
 BEGIN_MESSAGE_MAP(CMainDlg, CDialogEx)
@@ -99,6 +106,17 @@ BOOL CMainDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 设置小图标
 
 	// TODO: 在此添加额外的初始化代码
+	//创建主Tab控件标题
+	m_TabMain.InsertItemCustom(6, L"进程", L"窗口", L"文件", L"性能",L"LoadPE", L"附加功能");
+	m_TabMain.AddDialogCustom(6,
+		IDD_DIALOG_PROCESS, new CProcessDlg(),
+		IDD_DIALOG_WND, new CWndDlg(),
+		IDD_DIALOG_FILE, new CFileDlg(),
+		IDD_DIALOG_PERFORMANCE, new CPerformDlg(),
+		IDD_DIALOG_LOADPE, new CPeDlg(),
+		IDD_DIALOG_POWER, new CPowerDlg()
+	);
+	m_TabMain.ShowDialogCustom(0);
 
 	return TRUE;  // 除非将焦点设置到控件，否则返回 TRUE
 }
