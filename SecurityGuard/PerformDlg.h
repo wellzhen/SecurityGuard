@@ -28,6 +28,7 @@ public:
 	void UpdatePerformanceData();
 	INT GetCpuUsage();
 	double FILETIME2Double(const _FILETIME& fileTime);
+	DWORD PASCAL GetVersion(void);
 
 public:
 	CProgressCtrl m_Progress_MemoryLoad;
@@ -43,4 +44,6 @@ public:
 	CStatic m_Static_MemoryLoad;
 	CStatic m_Static_CpuUsage;
 	afx_msg void OnTimer(UINT_PTR nIDEvent);
+	afx_msg void OnBnClickedButtonClearMem();
+	afx_msg void OnBnClickedButtonSysteminfo();
 };

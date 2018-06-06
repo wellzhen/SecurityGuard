@@ -48,6 +48,11 @@ END_MESSAGE_MAP()
 
 void CResourceDirDlg::ShowRescInfo()
 {
+	//设置样式
+	DWORD dwStyle = m_RescTreeCtrl.GetStyle();
+	dwStyle = dwStyle | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS | TVS_SINGLEEXPAND;
+	m_RescTreeCtrl.ModifyStyle(0, dwStyle);
+	//
 	WCHAR*  pResourceType[] = { L"0", L"鼠标指针",L"bitmap",L"icon", L"menu", L"dialog", L"string table", L"fontDir", L"font", L"shortCut", L"noFormatResource", L"MessageList", L"mouserCursorGroup",L"D",  L"iconGroup",L"F", L"versionInfo" };
 	DWORD dwRescAddrRVA = m_pPE->m_pDataDir[2].VirtualAddress;
 	DWORD dwRescAddrFOA = m_pPE->RVA2FOA(dwRescAddrRVA);

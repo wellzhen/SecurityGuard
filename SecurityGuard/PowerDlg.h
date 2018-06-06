@@ -28,6 +28,8 @@ public:
 	afx_msg void OnBnClickedButtonLock();
 	afx_msg void OnBnClickedButtonSleep();
 	afx_msg void OnBnClickedButtonRest();
-//	afx_msg void OnBnClickedButtonHotKey();
+	afx_msg void OnBnClickedButtonHotKey();
 	virtual BOOL PreTranslateMessage(MSG* pMsg);
+public:
+	BOOL m_IsWindowHide = TRUE;  // 全局热键使用
 };

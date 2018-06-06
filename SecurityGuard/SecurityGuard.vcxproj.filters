@@ -123,6 +123,9 @@
     <ClInclude Include="TlsDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="Md5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SecurityGuard.cpp">
@@ -222,6 +225,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="TlsDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Md5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -5,7 +5,9 @@
 #include "SecurityGuard.h"
 #include "PerformDlg.h"
 #include "afxdialogex.h"
-
+#include <Psapi.h>
+#include <lm.h>
+#pragma comment(lib, "netapi32.lib")
 
 // CPerformDlg 对话框
 
@@ -41,6 +43,8 @@ void CPerformDlg::DoDataExchange(CDataExchange* pDX)
 
 BEGIN_MESSAGE_MAP(CPerformDlg, CDialogEx)
 	ON_WM_TIMER()
+	ON_BN_CLICKED(IDC_BUTTON_Clear_Mem, &CPerformDlg::OnBnClickedButtonClearMem)
+	ON_BN_CLICKED(IDC_BUTTON_SystemInfo, &CPerformDlg::OnBnClickedButtonSysteminfo)
 END_MESSAGE_MAP()
 
 void CPerformDlg::UpdatePerformanceData()
@@ -135,4 +139,82 @@ void CPerformDlg::OnTimer(UINT_PTR nIDEvent)
 	}
 
 	CDialogEx::OnTimer(nIDEvent);
+}
+
+//优化内存
+void CPerformDlg::OnBnClickedButtonClearMem()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	//1. 获取当前的内存状态
+	MEMORYSTATUSEX stcMemStatusEx = { 0 };
+	stcMemStatusEx.dwLength = sizeof(stcMemStatusEx);
+	GlobalMemoryStatusEx(&stcMemStatusEx);
+	DWORDLONG preUsedMem = stcMemStatusEx.ullTotalPhys - stcMemStatusEx.ullAvailPhys;
+	//2. 清理内存
+	DWORD dwPIDList[1000] = { 0 };
+	DWORD bufSize = sizeof(dwPIDList);
+	DWORD dwNeedSize = 0;
+	EnumProcesses(dwPIDList, bufSize, &dwNeedSize);
+	for (DWORD i = 0; i < dwNeedSize / sizeof(DWORD); i++) {
+		HANDLE hProcess = OpenProcess(PROCESS_SET_QUOTA, false, dwPIDList[i]);
+		SetProcessWorkingSetSize(hProcess, -1, -1);
+	}
+	//3. 获取清理后的内存状态
+	GlobalMemoryStatusEx(&stcMemStatusEx);
+	DWORDLONG afterCleanUsedMem = stcMemStatusEx.ullTotalPhys - stcMemStatusEx.ullAvailPhys;
+
+	
+	//self:update
+	UpdatePerformanceData();
+
+}
+
+DWORD PASCAL CPerformDlg::GetVersion(void)
+{  
+	//from:  https://msdn.microsoft.com/en-us/library/aa370663.aspx
+	DWORD dwLevel = 102;
+	LPWKSTA_INFO_102 pBuf = NULL;
+	NET_API_STATUS nStatus;
+	LPWSTR pszServerName = NULL;
+	//
+	// Call the NetWkstaGetInfo function, specifying level 102.
+	//
+	nStatus = NetWkstaGetInfo(pszServerName,
+		dwLevel,
+		(LPBYTE *)&pBuf);
+	//
+	// If the call is successful,
+	//  print the workstation data.
+	//
+	if (nStatus == NERR_Success)
+	{
+		CString strVersion;
+		CString strPlatform = L"Not  NT platform";
+		if (pBuf->wki102_platform_id == PLATFORM_ID_NT) {
+			strPlatform = L"Windows NT";
+		}
+		strVersion.Format(L" Platform: %s \n Name:     %s \n Version:  %d.%d   \n Domain:   %s\n Lan Root: %s \n Logged On Users: %d ", 
+			strPlatform, pBuf->wki102_computername, pBuf->wki102_ver_major,
+			pBuf->wki102_ver_minor, pBuf->wki102_langroup, pBuf->wki102_lanroot, pBuf->wki102_logged_on_users);
+		MessageBox(strVersion);
+	}
+	//
+	// Otherwise, indicate the system error.
+	//
+	else
+		MessageBox(L"A system error has occurred");
+	//
+	// Free the allocated memory.
+	//
+	if (pBuf != NULL)
+		NetApiBufferFree(pBuf);
+
+	return 0;
+}
+
+
+void CPerformDlg::OnBnClickedButtonSysteminfo()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	GetVersion();
 }

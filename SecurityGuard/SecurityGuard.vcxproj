@@ -197,6 +197,7 @@
     <ClInclude Include="ImportThunkList.h" />
     <ClInclude Include="ListCtrlCore.h" />
     <ClInclude Include="MainDlg.h" />
+    <ClInclude Include="Md5.h" />
     <ClInclude Include="ModuleDlg.h" />
     <ClInclude Include="ModuleList.h" />
     <ClInclude Include="NtHeaderDlg.h" />
@@ -234,6 +235,7 @@
     <ClCompile Include="ImportThunkList.cpp" />
     <ClCompile Include="ListCtrlCore.cpp" />
     <ClCompile Include="MainDlg.cpp" />
+    <ClCompile Include="Md5.cpp" />
     <ClCompile Include="ModuleDlg.cpp" />
     <ClCompile Include="ModuleList.cpp" />
     <ClCompile Include="NtHeaderDlg.cpp" />

@@ -36,7 +36,7 @@ BEGIN_MESSAGE_MAP(CPowerDlg, CDialogEx)
 	ON_BN_CLICKED(IDC_BUTTON_LOCK, &CPowerDlg::OnBnClickedButtonLock)
 	ON_BN_CLICKED(IDC_BUTTON_SLEEP, &CPowerDlg::OnBnClickedButtonSleep)
 	ON_BN_CLICKED(IDC_BUTTON_REST, &CPowerDlg::OnBnClickedButtonRest)
-	//ON_BN_CLICKED(IDC_BUTTON_HOT_KEY, &CPowerDlg::OnBnClickedButtonHotKey)
+	ON_BN_CLICKED(IDC_BUTTON_HOT_KEY, &CPowerDlg::OnBnClickedButtonHotKey)
 END_MESSAGE_MAP()
 
 
@@ -110,22 +110,34 @@ void CPowerDlg::OnBnClickedButtonRest()
 }
 
 
-//void CPowerDlg::OnBnClickedButtonHotKey()
-//{
-//	// TODO: 在此添加控件通知处理程序代码
-//}
 
 
 BOOL CPowerDlg::PreTranslateMessage(MSG* pMsg)
 {
 	// TODO: 在此添加专用代码和/或调用基类
-	if (pMsg->message == WM_HOTKEY && pMsg->wParam == 0x1234) {
-		if (IsWindowVisible() == TRUE) {
+	if (pMsg->message == WM_HOTKEY && pMsg->wParam == 0xa001) {
+		MessageBox(L"ee");
+		if (m_IsWindowHide == TRUE) {
 			ShowWindow(SW_HIDE);
+			m_IsWindowHide = FALSE;
 		}
 		else {
 			ShowWindow(SW_SHOW);
+			m_IsWindowHide = TRUE;
 		}
 	}
 	return CDialogEx::PreTranslateMessage(pMsg);
+}
+
+
+void CPowerDlg::OnBnClickedButtonHotKey()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	BOOL res = ::RegisterHotKey(this->GetSafeHwnd(), 0xa001, MOD_CONTROL | MOD_SHIFT, 'k');
+	if (res) {
+		MessageBox(L"注册成功");
+	}
+	else {
+		MessageBox(L"注册失败");
+	}
 }

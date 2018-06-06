@@ -5,7 +5,15 @@
 #include "SecurityGuard.h"
 #include "FileDlg.h"
 #include "afxdialogex.h"
+#include "Md5.h"
 
+#define  WCHAR_TO_CHAR(lpW_Char, lpChar) \
+    WideCharToMultiByte(CP_ACP, NULL, lpW_Char, -1,\
+lpChar, _countof(lpChar), NULL, FALSE);
+
+#define  CHAR_TO_WCHAR(lpChar, lpW_Char) \
+    MultiByteToWideChar(CP_ACP, NULL, lpChar, -1,\
+lpW_Char, _countof(lpW_Char));
 
 // CFileDlg 对话框
 
@@ -45,7 +53,9 @@ void CFileDlg::TraverseFiles(CString fullPath, HTREEITEM  hRootNode)
 	if (INVALID_HANDLE_VALUE == hFileList) {
 		return;
 	}
-
+	DWORD dwStyle = m_FilesTree.GetStyle();
+	dwStyle = dwStyle | TVS_HASLINES | TVS_LINESATROOT | TVS_HASBUTTONS | TVS_SINGLEEXPAND;
+	m_FilesTree.ModifyStyle(0,dwStyle);
 	do {
 		strFileName = findFileData.cFileName;
 		if (strFileName[0] == '.' || strFileName[0] == '..') {
@@ -68,7 +78,20 @@ void CFileDlg::TraverseFiles(CString fullPath, HTREEITEM  hRootNode)
 			FileTimeToSystemTime(&findFileData.ftCreationTime, &sysCreationTime);
 			FileTimeToSystemTime(&findFileData.ftLastAccessTime, &sysAccessTime);
 			FileTimeToSystemTime(&findFileData.ftLastWriteTime, &sysWriteTime);
-			info.Format(L"%s  %d byte  Creation(%d/%d/%d %d:%d:%d) Access(%d/%d/%d %d:%d:%d) Write(%d/%d/%d %d:%d:%d) ", findFileData.cFileName, findFileData.nFileSizeLow,
+			//修正时间
+			sysCreationTime.wHour = (sysCreationTime.wHour + 8) % 24;
+			sysAccessTime.wHour = (sysAccessTime.wHour + 8) % 24;
+			sysWriteTime.wHour = (sysWriteTime.wHour + 8) % 24;
+			//计算md5;
+			CString strFullPath;
+			strFullPath.Format(L"%s\\%s", fullPath, findFileData.cFileName);
+			char chFullPath[256] = { 0 };
+			WCHAR_TO_CHAR(strFullPath.GetBuffer(), chFullPath);
+			char* md5 = md5FileValue(chFullPath);
+			WCHAR wMd5[256] = { 0 };
+			CHAR_TO_WCHAR(md5, wMd5);
+			
+			info.Format(L"%s  %d byte <%s> [c]%d/%d/%d %d:%02d:%d [a]%d/%d/%d %d:%02d:%d [m]%d/%d/%d %d:%02d:%d ", findFileData.cFileName, findFileData.nFileSizeLow, wMd5,
 				sysCreationTime.wYear, sysCreationTime.wMonth, sysCreationTime.wDay, sysCreationTime.wHour, sysCreationTime.wMinute, sysCreationTime.wSecond,
 				sysAccessTime.wYear, sysAccessTime.wMonth, sysAccessTime.wDay, sysAccessTime.wHour, sysAccessTime.wMinute, sysAccessTime.wSecond,
 				sysWriteTime.wYear, sysWriteTime.wMonth, sysWriteTime.wDay, sysWriteTime.wHour, sysWriteTime.wMinute, sysWriteTime.wSecond
