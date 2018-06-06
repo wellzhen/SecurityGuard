@@ -45,4 +45,6 @@ public:
 	CString m_strSizeOfOptionalHeader;
 	CString m_strNumOfDataDir;
 	virtual BOOL OnInitDialog();
+	afx_msg void OnBnClickedBtnSectionHeader();
+	afx_msg void OnBnClickedBtnDatadir();
 };

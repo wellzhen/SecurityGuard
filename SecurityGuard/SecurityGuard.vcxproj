@@ -185,10 +185,16 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="DataDirDlb.h" />
+    <ClInclude Include="ExportDirDlg.h" />
+    <ClInclude Include="ExportDirList.h" />
     <ClInclude Include="FileDlg.h" />
     <ClInclude Include="FilesTree.h" />
     <ClInclude Include="HeapDlg.h" />
     <ClInclude Include="HeapList.h" />
+    <ClInclude Include="ImportDescDlg.h" />
+    <ClInclude Include="ImportDllList.h" />
+    <ClInclude Include="ImportThunkList.h" />
     <ClInclude Include="ListCtrlCore.h" />
     <ClInclude Include="MainDlg.h" />
     <ClInclude Include="ModuleDlg.h" />
@@ -201,6 +207,8 @@
     <ClInclude Include="ProcessDlg.h" />
     <ClInclude Include="ProcessList.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="SectionHeaderDlg.h" />
+    <ClInclude Include="SectionHeaderList.h" />
     <ClInclude Include="SecurityGuard.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TabMain.h" />
@@ -211,10 +219,16 @@
     <ClInclude Include="WndList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DataDirDlb.cpp" />
+    <ClCompile Include="ExportDirDlg.cpp" />
+    <ClCompile Include="ExportDirList.cpp" />
     <ClCompile Include="FileDlg.cpp" />
     <ClCompile Include="FilesTree.cpp" />
     <ClCompile Include="HeapDlg.cpp" />
     <ClCompile Include="HeapList.cpp" />
+    <ClCompile Include="ImportDescDlg.cpp" />
+    <ClCompile Include="ImportDllList.cpp" />
+    <ClCompile Include="ImportThunkList.cpp" />
     <ClCompile Include="ListCtrlCore.cpp" />
     <ClCompile Include="MainDlg.cpp" />
     <ClCompile Include="ModuleDlg.cpp" />
@@ -226,6 +240,8 @@
     <ClCompile Include="PowerDlg.cpp" />
     <ClCompile Include="ProcessDlg.cpp" />
     <ClCompile Include="ProcessList.cpp" />
+    <ClCompile Include="SectionHeaderDlg.cpp" />
+    <ClCompile Include="SectionHeaderList.cpp" />
     <ClCompile Include="SecurityGuard.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

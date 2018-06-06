@@ -90,6 +90,30 @@
     <ClInclude Include="NtHeaderDlg.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="SectionHeaderDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="SectionHeaderList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="DataDirDlb.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportDirDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ExportDirList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportDescDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportDllList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ImportThunkList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SecurityGuard.cpp">
@@ -156,6 +180,30 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="NtHeaderDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SectionHeaderDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="SectionHeaderList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="DataDirDlb.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportDirDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ExportDirList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportDescDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportDllList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ImportThunkList.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

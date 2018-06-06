@@ -5,7 +5,8 @@
 #include "SecurityGuard.h"
 #include "NtHeaderDlg.h"
 #include "afxdialogex.h"
-
+#include "SectionHeaderDlg.h"
+#include "DataDirDlb.h"
 
 // CNtHeaderDlg 对话框
 
@@ -60,6 +61,8 @@ void CNtHeaderDlg::DoDataExchange(CDataExchange* pDX)
 
 
 BEGIN_MESSAGE_MAP(CNtHeaderDlg, CDialogEx)
+	ON_BN_CLICKED(IDC_BTN_SECTION_HEADER, &CNtHeaderDlg::OnBnClickedBtnSectionHeader)
+	ON_BN_CLICKED(IDC_BTN_DATADIR, &CNtHeaderDlg::OnBnClickedBtnDatadir)
 END_MESSAGE_MAP()
 
 
@@ -100,4 +103,24 @@ void CNtHeaderDlg::ShowNtHeaderInfo()
 
 
 	UpdateData(false);
+}
+
+
+void CNtHeaderDlg::OnBnClickedBtnSectionHeader()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CSectionHeaderDlg* pSectionHeaderDlg = new CSectionHeaderDlg();
+	pSectionHeaderDlg->m_pPE = m_pPE;
+	pSectionHeaderDlg->DoModal();
+
+}
+
+
+void CNtHeaderDlg::OnBnClickedBtnDatadir()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CDataDirDlb* pDataDirDlb = new CDataDirDlb();
+	pDataDirDlb->m_pPE = m_pPE;
+	pDataDirDlb->DoModal();
+	
 }

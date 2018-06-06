@@ -36,7 +36,7 @@ BOOL CPe::LoadFile(WCHAR* pFileName)
 	m_pNtHeaders = (IMAGE_NT_HEADERS*)(m_pDosHeader->e_lfanew + m_pFileBuffer); // error + fileBase
 	m_pFileHeader = (IMAGE_FILE_HEADER*)(&m_pNtHeaders->FileHeader);
 	m_pOptionalHeader = (IMAGE_OPTIONAL_HEADER*)(&m_pNtHeaders->OptionalHeader);
-	m_pSectionHeader = IMAGE_FIRST_SECTION(m_pNtHeaders);
+	m_pSectionHeader = (IMAGE_SECTION_HEADER*)IMAGE_FIRST_SECTION(m_pNtHeaders);
 	m_pDataDir = (IMAGE_DATA_DIRECTORY*)m_pOptionalHeader->DataDirectory;
 
 	CloseHandle(hFile);
