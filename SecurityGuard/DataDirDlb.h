@@ -41,4 +41,7 @@ public:
 	CString m_strTLSSize;
 	afx_msg void OnBnClickedBtnExportDir();
 	afx_msg void OnBnClickedBtnImportDesc();
+	afx_msg void OnBnClickedBtnResourceDir();
+	afx_msg void OnBnClickedBtnRelocation();
+	afx_msg void OnBnClickedBtnTls();
 };

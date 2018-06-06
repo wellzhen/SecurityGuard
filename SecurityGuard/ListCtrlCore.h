@@ -13,6 +13,9 @@ public:
 
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+	void InsertColumnCustom(DWORD dwCount, ...);
+	void InsertItemCustom(DWORD dwCount, ...);
 };
 
 

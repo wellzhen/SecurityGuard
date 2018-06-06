@@ -114,6 +114,15 @@
     <ClInclude Include="ImportThunkList.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ResourceDirDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="RelocationDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="TlsDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SecurityGuard.cpp">
@@ -204,6 +213,15 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="ImportThunkList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceDirDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="RelocationDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="TlsDlg.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

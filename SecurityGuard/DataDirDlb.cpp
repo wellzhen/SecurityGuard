@@ -7,6 +7,9 @@
 #include "afxdialogex.h"
 #include "ExportDirDlg.h"
 #include "ImportDescDlg.h"
+#include "ResourceDirDlg.h"
+#include "RelocationDlg.h"
+#include "TlsDlg.h"
 
 
 // CDataDirDlb 对话框
@@ -56,6 +59,9 @@ void CDataDirDlb::DoDataExchange(CDataExchange* pDX)
 BEGIN_MESSAGE_MAP(CDataDirDlb, CDialogEx)
 	ON_BN_CLICKED(IDC_BTN_export, &CDataDirDlb::OnBnClickedBtnExportDir)
 	ON_BN_CLICKED(IDC_BTN_import, &CDataDirDlb::OnBnClickedBtnImportDesc)
+	ON_BN_CLICKED(IDC_BTN_resource, &CDataDirDlb::OnBnClickedBtnResourceDir)
+	ON_BN_CLICKED(IDC_BTN_relocation, &CDataDirDlb::OnBnClickedBtnRelocation)
+	ON_BN_CLICKED(IDC_BTN_Tls, &CDataDirDlb::OnBnClickedBtnTls)
 END_MESSAGE_MAP()
 
 void CDataDirDlb::ShowDataDirInfo()
@@ -114,4 +120,31 @@ void CDataDirDlb::OnBnClickedBtnImportDesc()
 	CImportDescDlg* pImportDescDlg = new CImportDescDlg();
 	pImportDescDlg->m_pPE = m_pPE;
 	pImportDescDlg->DoModal();
+}
+
+
+void CDataDirDlb::OnBnClickedBtnResourceDir()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CResourceDirDlg* pRescDirDlg = new CResourceDirDlg();
+	pRescDirDlg->m_pPE = m_pPE;
+	pRescDirDlg->DoModal();
+}
+
+
+void CDataDirDlb::OnBnClickedBtnRelocation()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CRelocationDlg* pRelocDlg = new CRelocationDlg();
+	pRelocDlg->m_pPE = m_pPE;
+	pRelocDlg->DoModal();
+}
+
+
+void CDataDirDlb::OnBnClickedBtnTls()
+{
+	// TODO: 在此添加控件通知处理程序代码
+	CTlsDlg* pTlsDlg = new CTlsDlg();
+	pTlsDlg->m_pPE = m_pPE;
+	pTlsDlg->DoModal();
 }

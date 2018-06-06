@@ -206,7 +206,9 @@
     <ClInclude Include="PowerDlg.h" />
     <ClInclude Include="ProcessDlg.h" />
     <ClInclude Include="ProcessList.h" />
+    <ClInclude Include="RelocationDlg.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="ResourceDirDlg.h" />
     <ClInclude Include="SectionHeaderDlg.h" />
     <ClInclude Include="SectionHeaderList.h" />
     <ClInclude Include="SecurityGuard.h" />
@@ -215,6 +217,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="ThreadDlg.h" />
     <ClInclude Include="ThreadList.h" />
+    <ClInclude Include="TlsDlg.h" />
     <ClInclude Include="WndDlg.h" />
     <ClInclude Include="WndList.h" />
   </ItemGroup>
@@ -240,6 +243,8 @@
     <ClCompile Include="PowerDlg.cpp" />
     <ClCompile Include="ProcessDlg.cpp" />
     <ClCompile Include="ProcessList.cpp" />
+    <ClCompile Include="RelocationDlg.cpp" />
+    <ClCompile Include="ResourceDirDlg.cpp" />
     <ClCompile Include="SectionHeaderDlg.cpp" />
     <ClCompile Include="SectionHeaderList.cpp" />
     <ClCompile Include="SecurityGuard.cpp" />
@@ -252,6 +257,7 @@
     <ClCompile Include="TabMain.cpp" />
     <ClCompile Include="ThreadDlg.cpp" />
     <ClCompile Include="ThreadList.cpp" />
+    <ClCompile Include="TlsDlg.cpp" />
     <ClCompile Include="WndDlg.cpp" />
     <ClCompile Include="WndList.cpp" />
   </ItemGroup>
