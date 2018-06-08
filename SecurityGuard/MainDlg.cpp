@@ -12,6 +12,9 @@
 #include "PowerDlg.h"
 #include "WndDlg.h"
 #include "PeDlg.h"
+#include "ServiceDlg.h"
+#include "StartupDlg.h"
+#include "KillVirusDlg.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -107,13 +110,16 @@ BOOL CMainDlg::OnInitDialog()
 
 	// TODO: 在此添加额外的初始化代码
 	//创建主Tab控件标题
-	m_TabMain.InsertItemCustom(6, L"进程", L"窗口", L"文件", L"性能",L"LoadPE", L"附加功能");
-	m_TabMain.AddDialogCustom(6,
+	m_TabMain.InsertItemCustom(9, L"进程", L"窗口", L"服务",L"启动",L"文件", L"性能",L"LoadPE",L"杀毒", L"附加功能");
+	m_TabMain.AddDialogCustom(9,
 		IDD_DIALOG_PROCESS, new CProcessDlg(),
 		IDD_DIALOG_WND, new CWndDlg(),
+		IDD_DIALOG_Service, new CServiceDlg(),
+		IDD_DIALOG_StartUp, new CStartupDlg(),
 		IDD_DIALOG_FILE, new CFileDlg(),
 		IDD_DIALOG_PERFORMANCE, new CPerformDlg(),
 		IDD_DIALOG_LOADPE, new CPeDlg(),
+		IDD_DLG_KillVirus, new CKillVirusDlg(),
 		IDD_DIALOG_POWER, new CPowerDlg()
 	);
 	m_TabMain.ShowDialogCustom(0);

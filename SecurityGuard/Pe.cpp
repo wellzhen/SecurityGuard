@@ -33,6 +33,9 @@ BOOL CPe::LoadFile(WCHAR* pFileName)
 		return FALSE;
 	}
 	m_pDosHeader = (IMAGE_DOS_HEADER*)m_pFileBuffer;
+	if (m_pDosHeader->e_magic != 0x5a4d) {
+		return FALSE;
+	}
 	m_pNtHeaders = (IMAGE_NT_HEADERS*)(m_pDosHeader->e_lfanew + m_pFileBuffer); // error + fileBase
 	m_pFileHeader = (IMAGE_FILE_HEADER*)(&m_pNtHeaders->FileHeader);
 	m_pOptionalHeader = (IMAGE_OPTIONAL_HEADER*)(&m_pNtHeaders->OptionalHeader);

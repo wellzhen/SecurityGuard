@@ -90,7 +90,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_WINDOWS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_WINDOWS;_WINSOCK_DEPRECATED_NO_WARNINGS;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
     </ClCompile>
     <Link>
@@ -185,6 +185,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClientSocket.h" />
+    <ClInclude Include="Data.h" />
     <ClInclude Include="DataDirDlb.h" />
     <ClInclude Include="ExportDirDlg.h" />
     <ClInclude Include="ExportDirList.h" />
@@ -195,6 +197,7 @@
     <ClInclude Include="ImportDescDlg.h" />
     <ClInclude Include="ImportDllList.h" />
     <ClInclude Include="ImportThunkList.h" />
+    <ClInclude Include="KillVirusDlg.h" />
     <ClInclude Include="ListCtrlCore.h" />
     <ClInclude Include="MainDlg.h" />
     <ClInclude Include="Md5.h" />
@@ -213,6 +216,10 @@
     <ClInclude Include="SectionHeaderDlg.h" />
     <ClInclude Include="SectionHeaderList.h" />
     <ClInclude Include="SecurityGuard.h" />
+    <ClInclude Include="ServiceDlg.h" />
+    <ClInclude Include="ServiceList.h" />
+    <ClInclude Include="StartupDlg.h" />
+    <ClInclude Include="StartupList.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="TabMain.h" />
     <ClInclude Include="targetver.h" />
@@ -223,6 +230,7 @@
     <ClInclude Include="WndList.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClientSocket.cpp" />
     <ClCompile Include="DataDirDlb.cpp" />
     <ClCompile Include="ExportDirDlg.cpp" />
     <ClCompile Include="ExportDirList.cpp" />
@@ -233,6 +241,7 @@
     <ClCompile Include="ImportDescDlg.cpp" />
     <ClCompile Include="ImportDllList.cpp" />
     <ClCompile Include="ImportThunkList.cpp" />
+    <ClCompile Include="KillVirusDlg.cpp" />
     <ClCompile Include="ListCtrlCore.cpp" />
     <ClCompile Include="MainDlg.cpp" />
     <ClCompile Include="Md5.cpp" />
@@ -250,6 +259,10 @@
     <ClCompile Include="SectionHeaderDlg.cpp" />
     <ClCompile Include="SectionHeaderList.cpp" />
     <ClCompile Include="SecurityGuard.cpp" />
+    <ClCompile Include="ServiceDlg.cpp" />
+    <ClCompile Include="ServiceList.cpp" />
+    <ClCompile Include="StartupDlg.cpp" />
+    <ClCompile Include="StartupList.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

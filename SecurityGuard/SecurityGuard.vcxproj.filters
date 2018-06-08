@@ -126,6 +126,27 @@
     <ClInclude Include="Md5.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="ServiceDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ServiceList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StartupDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="StartupList.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="KillVirusDlg.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Data.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ClientSocket.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SecurityGuard.cpp">
@@ -228,6 +249,24 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="Md5.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ServiceList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StartupDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="StartupList.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="KillVirusDlg.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ClientSocket.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

@@ -154,7 +154,7 @@ void CFileDlg::TraverseDeleteFiles(CString fullPath, CString strDeletePostFix)
 			if (strDeletePostFix.Find(strPostfix) != -1) {
 				//删除文件
 				CString deleteInfo;
-				//deleteInfo.Format(L"删除文件:%s", strFileName);
+				deleteInfo.Format(L"删除文件:%s", strFileName);
 				CString strFullPath;
 				strFilePath.TrimRight(L"\\*");
 				strFullPath.Format(L"%s\\%s", strFilePath, strFileName);
